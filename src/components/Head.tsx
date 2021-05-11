@@ -6,7 +6,9 @@ const Head = (): ReactElement => {
 };
 
 const StyledHead = styled.div`
-  background-color: blue;
+  background-color: ${(props): string => {
+    return `${props.theme.color.main}`;
+  }};
 `;
 
 export default Head;

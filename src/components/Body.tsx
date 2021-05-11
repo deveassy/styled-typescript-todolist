@@ -6,7 +6,9 @@ const Body = (): ReactElement => {
 };
 
 const StyledBody = styled.div`
-  background-color: red;
+  background-color: ${(props): string => {
+    return `${props.theme.color.sub}`;
+  }};
 `;
 
 export default Body;

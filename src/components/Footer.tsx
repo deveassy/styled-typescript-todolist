@@ -6,7 +6,9 @@ const Footer = (): ReactElement => {
 };
 
 const StyledFooter = styled.div`
-  background-color: green;
+  background-color: ${(props): string => {
+    return `${props.theme.color.main}`;
+  }};
 `;
 
 export default Footer;
