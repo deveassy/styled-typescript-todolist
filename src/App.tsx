@@ -1,7 +1,5 @@
 import React from "react";
-import Head from "./components/Head";
-import Body from "./components/Body";
-import Footer from "./components/Footer";
+import TodoTemplate from "./components/TodoTemplate";
 import { ThemeProvider, DefaultTheme } from "styled-components";
 
 const lightTheme: DefaultTheme = {
@@ -20,9 +18,7 @@ const darkTheme: DefaultTheme = {
 function App() {
   return (
     <ThemeProvider theme={lightTheme}>
-      <Head />
-      <Body />
-      <Footer />
+      <TodoTemplate />
     </ThemeProvider>
   );
 }
