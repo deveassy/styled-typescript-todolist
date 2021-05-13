@@ -38,11 +38,23 @@ const TodoTemplate = () => {
     nextId.current += 1;
   };
 
+  const handleToggle: Toggle = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        return todo.id === id ? { ...todo, done: !todo.done } : todo;
+      })
+    );
+  };
+
+  const handleRemove: Remove = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <TemplateContainer>
       <TodoHeader>Todo List</TodoHeader>
       <TodoForm addTodo={addTodo} />
-      <TodoList />
+      <TodoList todos={todos} onToggle={handleToggle} onRemove={handleRemove} />
     </TemplateContainer>
   );
 };
