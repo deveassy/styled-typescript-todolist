@@ -5,8 +5,16 @@ import TodoHeader from "../TodoHeader";
 import TodoForm from "../TodoForm";
 import TodoList from "../TodoList";
 
+type Todo = {
+  id: number;
+  text: string;
+  done: boolean;
+};
+// type Todos = Array<Todo>;
+type Todos = Todo[];
+
 const TodoTemplate = () => {
-  const initialTodo = [
+  const initialTodo: Todos = [
     {
       id: 1,
       text: "make todolist with using typescript",
@@ -24,7 +32,7 @@ const TodoTemplate = () => {
     },
   ];
 
-  const [todos, setTodos] = useState(initialTodo);
+  const [todos, setTodos] = useState<Todos>(initialTodo);
 
   const nextId = useRef(0);
 
@@ -55,6 +63,7 @@ const TodoTemplate = () => {
       <TodoHeader>Todo List</TodoHeader>
       <TodoForm addTodo={addTodo} />
       <TodoList todos={todos} onToggle={handleToggle} onRemove={handleRemove} />
+      <AliceImg src="./img/imgAlice.PNG" />
     </TemplateContainer>
   );
 };
@@ -63,11 +72,19 @@ const TemplateContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 600px;
+  width: 42vw;
   height: 720px;
   padding: 20px;
-  border: 5px solid #000;
-  background-color: #f0e5d8;
+  background-color: ${(props) => props.theme.color.main};
+`;
+
+const AliceImg = styled.img`
+  position: absolute;
+  top: 423px;
+  left: 410px;
+  width: 30vw;
+  height: 50vh;
+  opacity: 0.2;
 `;
 
 export default TodoTemplate;

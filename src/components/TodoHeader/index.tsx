@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import styled from "styled-components";
 
 type HeaderText = { children: string };
@@ -12,8 +12,10 @@ function TodoHeader({ children }: HeaderText) {
   return <HeaderContainer>{children}</HeaderContainer>;
 }
 
-const HeaderContainer = styled.h1`
-  color: #eb5e0b;
+const HeaderContainer = styled.div`
+  font-size: 50px;
+  font-weight: 800;
+  color: #fff;
 `;
 
 export default TodoHeader;

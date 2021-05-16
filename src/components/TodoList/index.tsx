@@ -20,9 +20,14 @@ const TodoList = ({ todos, onRemove, onToggle }: TodoListProps) => {
 };
 
 const ListContainer = styled.div`
-  width: 90%;
-  height: 100%;
-  border: 2px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  width: 40vw;
+  height: 67vh;
+  /* border: 2px solid #fff; */
+  border-radius: 7px;
 `;
 
 export default TodoList;

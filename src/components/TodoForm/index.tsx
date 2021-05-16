@@ -46,21 +46,37 @@ const FormContainer = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 580px;
-  height: 70px;
-  border: 1px solid #000;
+  width: 40vw;
+  height: 7vh;
+  margin: 20px 0;
+  /* border: 1px solid #000; */
 `;
 
 const TodoInsert = styled.input`
   width: 400px;
-  padding: 10px;
+  padding: 10px 20px;
   margin: 0 10px;
-  font-size: 20px;
+  font-size: 1.2em;
+  border: 0;
+  border-radius: 100px;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    color: #ffe268;
+    font-style: italic;
+  }
 `;
 
 const AddButton = styled.button`
   width: 80px;
   padding: 10px;
+  border: 0;
+  border-radius: 10px;
+  background-color: #ffe268;
+  font-size: 1em;
+  font-weight: 700;
+  color: #2f5d62;
 `;
 
 export default TodoForm;

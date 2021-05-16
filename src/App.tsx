@@ -1,47 +1,41 @@
-import React, { Fragment } from "react";
+import React from "react";
 import TodoTemplate from "./components/TodoTemplate";
-import {
-  // ThemeProvider,
-  // DefaultTheme,
-  createGlobalStyle,
-} from "styled-components";
-
-// const lightTheme: DefaultTheme = {
-//   color: {
-//     main: "red",
-//     sub: "blue",
-//   },
-// };
-// const darkTheme: DefaultTheme = {
-//   color: {
-//     main: "white",
-//     sub: "black",
-//   },
-// };
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import { lightTheme } from "./styles/theme";
 
 function App() {
   return (
-    // <ThemeProvider theme={lightTheme}>
-    <Fragment>
+    <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <Layout>
+        <HeaderStyle src="./img/templateSpring.jpeg" />
         <TodoTemplate />
-      </div>
-    </Fragment>
-    // </ThemeProvider>
+      </Layout>
+    </ThemeProvider>
   );
 }
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #bbdfc8;
+    /* @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap'); */
+    /* @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Stick&display=swap'); */
+    /* background-color: #bbdfc8; */
   }
+  /* @font-face {
+    font-family: 'Stick', sans-serif;;
+    src: url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Stick&display=swap');
+  } */
+`;
+
+const Layout = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const HeaderStyle = styled.img`
+  width: 47vw;
 `;
 
 export default App;
