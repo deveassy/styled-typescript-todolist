@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useTodosDispatch } from "../../contexts/TodoContext";
 
-interface TodoFormProps {
-  addTodo: AddTodo;
-}
+// interface TodoFormProps {
+//   addTodo: AddTodo;
+// }
 
-const TodoForm = ({ addTodo }: TodoFormProps) => {
+// const TodoForm = ({ addTodo }: TodoFormProps) => {
+const TodoForm = () => {
   const [newTodo, setNewTodo] = useState("");
+  const dispatch = useTodosDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewTodo(e.target.value);
@@ -15,14 +18,22 @@ const TodoForm = ({ addTodo }: TodoFormProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!newTodo) return;
-    addTodo(newTodo);
+    // addTodo(newTodo);
+    dispatch({
+      type: "CREATE",
+      text: newTodo,
+    });
     setNewTodo("");
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (e.key === "Enter") {
-      addTodo(newTodo);
+      // addTodo(newTodo);
+      dispatch({
+        type: "CREATE",
+        text: newTodo,
+      });
     }
     setNewTodo("");
   };

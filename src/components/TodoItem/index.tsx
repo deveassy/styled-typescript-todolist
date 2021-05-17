@@ -1,23 +1,44 @@
 import React from "react";
 import styled from "styled-components";
+import { useTodosDispatch } from "../../contexts/TodoContext";
 
-interface TodoItemProps {
+// interface TodoItemProps {
+//   todo: Todo;
+//   onToggle: Toggle;
+//   onRemove: Remove;
+// }
+type TodoItemProps = {
   todo: Todo;
-  onToggle: Toggle;
-  onRemove: Remove;
-}
+};
+
 type TodoTextProps = {
   done: boolean;
 };
 
-const TodoItem = ({ todo, onToggle, onRemove }: TodoItemProps) => {
+// const TodoItem = ({ todo, onToggle, onRemove }: TodoItemProps) => {
+const TodoItem = ({ todo }: TodoItemProps) => {
+  const dispatch = useTodosDispatch();
+
+  const onToggle = () => {
+    dispatch({
+      type: "TOGGLE",
+      id: todo.id,
+    });
+  };
+
+  const onRemove = () => {
+    dispatch({
+      type: "REMOVE",
+      id: todo.id,
+    });
+  };
   return (
     <ItemContainer>
-      <DoneButton onClick={() => onToggle(todo.id)}>
+      <DoneButton onClick={onToggle}>
         {todo.done ? <DoneImg /> : null}
       </DoneButton>
       <TodoText done={todo.done}>{todo.text}</TodoText>
-      <DeleteButton onClick={() => onRemove(todo.id)}>X</DeleteButton>
+      <DeleteButton onClick={onRemove}>X</DeleteButton>
     </ItemContainer>
   );
 };

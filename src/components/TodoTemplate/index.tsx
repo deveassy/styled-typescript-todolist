@@ -1,70 +1,73 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import TodoHeader from "../TodoHeader";
 import TodoForm from "../TodoForm";
 import TodoList from "../TodoList";
+import { TodosContextProvider } from "../../contexts/TodoContext";
 
-type Todo = {
-  id: number;
-  text: string;
-  done: boolean;
-};
+// type Todo = {
+//   id: number;
+//   text: string;
+//   done: boolean;
+// };
 // type Todos = Array<Todo>;
-type Todos = Todo[];
+// type Todos = Todo[];
 
 const TodoTemplate = () => {
-  const initialTodo: Todos = [
-    {
-      id: 1,
-      text: "make todolist with using typescript",
-      done: false,
-    },
-    {
-      id: 2,
-      text: "practice style-components",
-      done: true,
-    },
-    {
-      id: 3,
-      text: "watching TV",
-      done: false,
-    },
-  ];
+  // const initialTodo: Todos = [
+  //   {
+  //     id: 1,
+  //     text: "make todolist with using typescript",
+  //     done: false,
+  //   },
+  //   {
+  //     id: 2,
+  //     text: "practice style-components",
+  //     done: true,
+  //   },
+  //   {
+  //     id: 3,
+  //     text: "watching TV",
+  //     done: false,
+  //   },
+  // ];
 
-  const [todos, setTodos] = useState<Todos>(initialTodo);
+  // const [todos, setTodos] = useState<Todos>(initialTodo);
 
-  const nextId = useRef(0);
+  // const nextId = useRef(0);
 
-  const addTodo: AddTodo = (newTodo) => {
-    const todo = {
-      id: nextId.current,
-      text: newTodo,
-      done: false,
-    };
-    setTodos(todos.concat(todo));
-    nextId.current += 1;
-  };
+  // const addTodo: AddTodo = (newTodo) => {
+  //   const todo = {
+  //     id: nextId.current,
+  //     text: newTodo,
+  //     done: false,
+  //   };
+  //   setTodos(todos.concat(todo));
+  //   nextId.current += 1;
+  // };
 
-  const handleToggle: Toggle = (id) => {
-    setTodos(
-      todos.map((todo) => {
-        return todo.id === id ? { ...todo, done: !todo.done } : todo;
-      })
-    );
-  };
+  // const handleToggle: Toggle = (id) => {
+  //   setTodos(
+  //     todos.map((todo) => {
+  //       return todo.id === id ? { ...todo, done: !todo.done } : todo;
+  //     })
+  //   );
+  // };
 
-  const handleRemove: Remove = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
+  // const handleRemove: Remove = (id) => {
+  //   setTodos(todos.filter((todo) => todo.id !== id));
+  // };
 
   return (
-    <TemplateContainer>
-      <TodoHeader>Todo List</TodoHeader>
-      <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} onToggle={handleToggle} onRemove={handleRemove} />
-      <AliceImg src="./img/imgAlice.PNG" />
-    </TemplateContainer>
+    <TodosContextProvider>
+      <TemplateContainer>
+        <TodoHeader>Todo List</TodoHeader>
+        <TodoForm />
+        <TodoList />
+        <AliceImg src="./img/imgAlice.PNG" />
+      </TemplateContainer>
+    </TodosContextProvider>
   );
 };
 
