@@ -1,5 +1,6 @@
 import React, { createContext, Dispatch, useReducer, useContext } from "react";
 
+type TodoState = Todo[];
 const initialTodos: TodoState = [
   {
     id: 1,
@@ -18,18 +19,16 @@ const initialTodos: TodoState = [
   },
 ];
 
-type Action =
+type TodoAction =
   | { type: "CREATE"; text: string }
   | { type: "TOGGLE"; id: number }
   | { type: "REMOVE"; id: number };
-
-type TodoState = Todo[];
-type TodoDispatch = Dispatch<Action>;
+type TodoDispatch = Dispatch<TodoAction>;
 
 const TodosStateContext = createContext<TodoState | undefined>(undefined);
 const TodosDispatchContext = createContext<TodoDispatch | undefined>(undefined);
 
-function todosReducer(state: TodoState, action: Action): TodoState {
+function todosReducer(state: TodoState, action: TodoAction): TodoState {
   switch (action.type) {
     case "CREATE":
       const nextId = Math.max(...state.map((todo) => todo.id)) + 1;
